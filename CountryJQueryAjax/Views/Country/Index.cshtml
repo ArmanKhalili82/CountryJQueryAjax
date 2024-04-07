@@ -1,0 +1,40 @@
+﻿
+<div class="container">
+    <div class="row pt-4 pb-2">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Country List
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Country" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-square"></i> Create New Data
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Country
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                    Capital
+                </th>
+                <th>
+                    Population
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="table_data"></tbody>
+    </table>
+</div>
+@* <a href="~/lib/jquery/dist/jquery.min.map">~/lib/jquery/dist/jquery.min.map</a> *@
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/custom.js"></script>
