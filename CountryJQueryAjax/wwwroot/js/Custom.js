@@ -36,5 +36,10 @@ function DelteId(id) {
 }
 
 function EditId() {
-    window.location.href = "/country/create"
+    window.location.href = "/country/create";
+    $.ajax({
+        url: 'Country/Edit',
+        type: "Get"
+    })
+
 }
