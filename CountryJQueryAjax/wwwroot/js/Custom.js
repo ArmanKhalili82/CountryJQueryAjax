@@ -16,8 +16,16 @@ function ShowAllData() {
                 object += '<td>' + item.city + '</td>';
                 object += '<td>' + item.capitalCity + '</td>';
                 object += '<td>' + item.population + '</td>';
-                //object += '<td><a onclick="DelteId()" class="btn btn-danger">Delete</a></td>';
-                //object += '<td><a onclick="EditId()" class="btn btn-primary">Edit</a></td>';
+                object += '<td>
+                    < a onclick = "DelteId()" asp - controller="Country" asp - action="Delete" class="btn btn-danger" >
+                        <i class="bi bi-trash3"></i> Delete
+                    </a >
+                </td > ';
+                object += '<td>
+                    <a asp - controller="Country" asp - action="Edit" class="btn btn-primary" >
+                        <i class="bi bi-pencil-square"></i> Edit
+                    </a>
+                </td > ';
                 object += '</tr>';
             });
             $('#table_data').html(object);
