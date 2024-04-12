@@ -1,0 +1,98 @@
+﻿@model CountryInfo
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create</h2>
+            <hr />
+        </div>
+        <div class="mb-3 row">
+            <label class="p-0">Country</label>
+            <input id="txtcountry" class="form-control" />
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
+            <label class="p-0">City</label>
+            <input id="txtcity" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
+            <label class="p-0">Population</label>
+            <input id="txtpopulation" class="form-control" />
+            <span asp-validation-for="Population" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
+            <label>Capital</label>
+            <select id="ddlcapital" class="form-control">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+            <span asp-validation-for="CapitalCity" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <a onclick="handlesave()" class="btn btn-success">Save</a><a onclick="backtolist()" class="btn btn-danger">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    function backtolist() {
+        window.location.href = "/country";
+    }
+
+    function handlesave() {
+        var country = $('#txtcountry').val();
+        var city = $('#txtcity').val();
+        var population = $('#txtpopulation').val();
+        var capital = $('#ddlcapital').val();
+        var isproceed = true;
+
+        // validation
+
+        if (country != '' && country != null) {
+            $('#txtcountry').css('border-color', '#ccc');
+        } else {
+            $('#txtcountry').css('border-color', 'red');
+            isproceed = false;
+        }
+
+        if (city != '' && city != null) {
+            $('#txtcity').css('border-color', '#ccc');
+        } else {
+            $('#txtcity').css('border-color', 'red');
+            isproceed = false;
+        }
+
+        if (population != '' && population != null) {
+            $('#txtpopulation').css('border-color', '#ccc');
+        } else {
+            $('#txtpopulation').css('border-color', 'red');
+            isproceed = false;
+        }
+
+        if (capital != '' && capital != null) {
+            $('#txtcapital').css('border-color', '#ccc');
+        } else {
+            $('#txtcapital').css('border-color', 'red');
+            isproceed = false;
+        }
+
+        if(isproceed) {
+            AddData();
+        }
+
+        function AddData() {
+            $.ajax({
+                url: 'Country/CreatePost',
+                type: 'Post',
+                dataType: 'json',
+                contentType: 'application/json',
+            })
+        }
+    }
+
+</script>

@@ -17,7 +17,8 @@ function ShowAllData() {
                 object += '<td>' + item.capitalCity + '</td>';
                 object += '<td>' + item.population + '</td>';
                 object += '<td><a onclick="DelteId()" class="btn btn-danger">Delete</a></td>';
-                object += '<tr>';
+                object += '<td><a onclick="EditId()" class="btn btn-primary">Edit</a></td>';
+                object += '</tr>';
             });
             $('#table_data').html(object);
         },
@@ -27,9 +28,9 @@ function ShowAllData() {
     });
 };
 
-function DelteId() {
+function DelteId(id) {
     $.ajax({
-        url: 'Country/Delete',
+        url: `Country/Delete/${id}`,
         type: "Delete"
     })
 }
