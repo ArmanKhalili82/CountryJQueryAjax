@@ -75,7 +75,7 @@ function Create() {
 function HideModal() {
     $(document).ready(function () {
         ClearData();
-        $('#btnAdd').Click(function () {
+        $('#btnAdd').click(function () {
             $('#CountryModal').modal('hide');
         });
     });
@@ -149,13 +149,13 @@ function Edit(id) {
             else {
                 $('#CountryModal').modal('show');
                 $('modalTitle').text("Update Country");
-                $('#Save').css('display', 'none');
                 $('#Update').css('display', 'block');
+                $('#Save').css('display', 'none');
                 $('#Id').val(response.id);
-                $('#Id').val(response.country);
-                $('#Id').val(response.city);
-                $('#Id').val(response.population);
-                $('#Id').val(response.capitalCity);
+                $('#Country').val(response.country);
+                $('#City').val(response.city);
+                $('#Population').val(response.population);
+                $('#CapitalCity').val(response.capitalCity);
             }
         },
         error: function () {
@@ -170,7 +170,7 @@ function Update() {
     if (result == false) {
         return false;
     }
-    var formData = new object();
+    var formData = new Object();
     formData.id = $('#Id').val();
     formData.Country = $('#Country').val();
     formData.City = $('#City').val();
