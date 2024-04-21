@@ -9,7 +9,7 @@ function ShowAllData() {
         type: 'Get',
         dataType: 'json',
         contentType: 'application/json',
-        success: function (result,statu,xhr) {
+        success: function (result, statu, xhr) {
             var object = "";
             $.each(result, function (index, item) {
                 object += '<tr>';
@@ -17,8 +17,8 @@ function ShowAllData() {
                 object += '<td>' + item.city + '</td>';
                 object += '<td>' + item.capitalCity + '</td>';
                 object += '<td>' + item.population + '</td>';
-                object += '<td><a onclick="DelteId(' + item.id + ')" class="btn btn-danger">Delete</a></td>';
-                object += '<td><a onclick="EditId(' + item.id + ')" class="btn btn-primary">Edit</a></td>';
+                object += '<td><a onclick="Delete(' + item.id + ')" class="btn btn-danger">Delete</a></td>';
+                object += '<td><a onclick="Edit(' + item.id + ')" class="btn btn-primary">Edit</a></td>';
                 object += '</tr>';
             });
             $('#table_data').html(object);
@@ -29,11 +29,11 @@ function ShowAllData() {
     });
 };
 
-    $('#btnAdd').Click(function () {
-        alert("clicked");
-        $('#CountryModal').modal('show');
-        $('#modalTitle').text('Add Country');
-    });
+$('#btnAdd').click(function () {
+    alert("clicked");
+    $('#CountryModal').modal('show');
+    $('#modalTitle').text('Add Country');
+});
 
 
 //Add Data
@@ -194,30 +194,33 @@ function Update() {
         error: function () {
             alert('Unable to save the data');
         }
-    }
+    })
+}
 
-    function Delete(id) {
-        if (confirm("Are you sure to delete this record?")) {
-            $.ajax({
-                url: '/Country/Delete?id=' + id,
-                type: 'post',
-                success: function (response) {
-                    if (response == null || response == undefined) {
-                        alert('Unable to delete to data');
-                    }
 
-                    else {
-                        ShowAllData();
-                        alert(response);
-                    }
-                },
-                error: function () {
+
+
+
+function Delete(id) {
+    if (confirm("Are you sure to delete this record?")) {
+        $.ajax({
+            url: '/Country/Delete?id=' + id,
+            type: 'post',
+            success: function (response) {
+                if (response == null || response == undefined) {
                     alert('Unable to delete to data');
                 }
-            });
-        }
-            
-        }
+
+                else {
+                    ShowAllData();
+                    alert(response);
+                }
+            },
+            error: function () {
+                alert('Unable to delete to data');
+            }
+        });
+    }
 
 
 //function DelteId(id) {
@@ -234,4 +237,4 @@ function Update() {
 //        type: "Get"
 //    })
 
-//}
+}
