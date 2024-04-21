@@ -29,14 +29,11 @@ function ShowAllData() {
     });
 };
 
-
-$(document).ready(function () {
     $('#btnAdd').Click(function () {
         alert("clicked");
         $('#CountryModal').modal('show');
         $('#modalTitle').text('Add Country');
     });
-});
 
 
 //Add Data
@@ -199,7 +196,6 @@ function Update() {
         }
     }
 
-//Delete Data
     function Delete(id) {
         if (confirm("Are you sure to delete this record?")) {
             $.ajax({
