@@ -28,13 +28,16 @@ namespace CountryJQueryAjax.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(CountryInfo model)
         {
-            if (ModelState.IsValid)
-            {
-                await _context.Countries.AddAsync(model);
-                await _context.SaveChangesAsync();
-                return Json("Country infos saved");
-            }
-            return Json("Validation failed");
+            await _context.Countries.AddAsync(model);
+            await _context.SaveChangesAsync();
+            return Json("Country infos saved");
+            //if (ModelState.IsValid)
+            //{
+            //    await _context.Countries.AddAsync(model);
+            //    await _context.SaveChangesAsync();
+            //    return Json("Country infos saved");
+            //}
+            //return Json("Validation failed");
         }
 
         [HttpGet]
